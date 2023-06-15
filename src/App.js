@@ -1,6 +1,105 @@
 import "bootstrap/dist/css/bootstrap.css";
-import {useState} from "react";
+import { useRef, useState } from "react";
 
+function App()
+{
+  return(
+    <>
+      <h1>List with Button</h1>
+      <ListDemo/>
+    </>
+  );
+}
+
+function ListDemo()
+{
+  let inpRef=useRef();
+  let [list, setList]=useState([]);
+  
+  let addItem=()=>{
+    console.log(inpRef);
+    console.log(inpRef.current);
+    console.log(inpRef.current.value);
+    let inpValue=inpRef.current.value;
+
+    let newList=[...list , inpValue];
+    setList(newList);
+  }
+  return(
+    <>
+      <div className="container">
+        <input 
+            type="text"
+            placeholder="Enter here..." 
+            id="id1"
+            ref={inpRef}
+            className="form-control border-success my-2"
+        />
+        <input 
+            type="button" 
+            value="Click Me" 
+            className="bg-success text-light fs-2"
+            onClick={addItem}
+        />
+
+        {list.map( (item)=> <p>{item}</p>)}
+      </div>
+    </>
+  )
+}
+export default App;
+
+/*
+Not a good way to use DOM as react have virutal DOM use above approch
+
+function App()
+{
+  return(
+    <>
+      <h1>List with Button</h1>
+      <ListDemo/>
+    </>
+  )
+}
+
+function ListDemo()
+{
+  let [list, setList]=useState([]);
+  
+  let addItem=()=>{
+    let inpRef=document.querySelector("#id1");
+    let inp=inpRef.value;
+
+    let newList=[...list, inp];
+    setList(newList);
+
+    inpRef.value="";
+  }
+  return(
+    <>
+      <div className="container">
+        <input 
+            type="text"
+            placeholder="Enter here..." 
+            id="id1"
+            className="form-control border-success my-2"
+        />
+        <input 
+            type="button" 
+            value="Click Me" 
+            className="bg-success text-light fs-2"
+            onClick={addItem}
+        />
+
+        {list.map( (item)=> <p>{item}</p>)}
+      </div>
+    </>
+  )
+}
+export default App;
+
+
+---------------------------------------------------------------------
 function App()
 {
   return(
@@ -34,7 +133,7 @@ function ListDemo()
 }
 export default App;
 
-/*
+
 function App()
 {
   return(
