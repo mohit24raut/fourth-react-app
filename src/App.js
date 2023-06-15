@@ -1,5 +1,42 @@
 import "bootstrap/dist/css/bootstrap.css";
 import {useState} from "react";
+
+function App()
+{
+  return(
+    <>
+    <div className="container">
+      <h1>Message List</h1>
+      <WhatApp/>
+    </div>
+    </>
+  )
+}
+
+function WhatApp()
+{
+  let list=["Mohit", "ROhit", "Kohit"];
+  let list1=[];
+  for(let i=0; i<10; i++)
+  {
+    list1.push("");
+  }
+  return(
+    <>
+      {list1.map((item)=>(
+                      <div>
+                          <h1>Hello {item}</h1>
+                      </div>
+                      ))}
+    </>
+  )
+}
+export default App;
+/*
+
+Like to msg
+
+
 function App() {
   return(
     <>
@@ -29,6 +66,6 @@ function Liker()
       </>
     
   )
-}
+}*/
 
-export default App;
+
