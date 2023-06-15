@@ -1,6 +1,83 @@
 import "bootstrap/dist/css/bootstrap.css";
 import { useRef, useState } from "react";
 
+
+function App()
+{
+  return(
+    <>
+      <h1>List with Button</h1>
+      <ListDemo/>
+    </>
+  );
+}
+
+function ListDemo()
+{
+  let inpRef=useRef();
+  let [list, setList]=useState([]);
+  
+  let addItem=()=>{
+    console.log(inpRef);
+    console.log(inpRef.current);
+    console.log(inpRef.current.value);
+    let inpValue=inpRef.current.value;
+
+    let newList=[inpValue, ...list ];
+    setList(newList);
+
+    inpRef.current.value="";
+  }
+  return(
+    <>
+      <div className="container">
+        <input 
+            type="text"
+            placeholder="Enter here..." 
+            id="id1"
+            ref={inpRef}
+            className="form-control border-success my-2"
+        />
+        <input 
+            type="button" 
+            value="Click Me" 
+            className="bg-success text-light fs-2"
+            onClick={addItem}
+        />
+
+        {list.map( (item)=> <MapList item={item}/>)}
+      </div>
+    </>
+  )
+}
+function MapList(props)
+{
+  let [like, setLike]=useState(0);
+  let [dislike, setDislike]=useState(0);
+
+  let likeMe=()=>{
+    like=like+1;
+    setLike(like);
+  }
+  let dislikeMe=()=>{
+    dislike=dislike+1;
+    setDislike(dislike);
+  }
+  return(
+    <>
+      <h3>{props.item}</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas dolor et sed voluptatum quam esse ratione, porro laboriosam ipsam totam dolorum impedit sit dolorem accusamus quis autem necessitatibus quo soluta.</p>
+      <div>
+          <span><b>{like}</b></span>
+          <input type="button" value="&#128077;" onClick={likeMe}/>   
+          <span><b>{dislike}</b></span>
+          <input type="button" value="&#128078;" onClick={dislikeMe}/>
+      </div>
+    </>
+  )
+}
+export default App;
+/*
 function App()
 {
   return(
@@ -48,8 +125,8 @@ function ListDemo()
   )
 }
 export default App;
+----------------------------------------------------------------
 
-/*
 Not a good way to use DOM as react have virutal DOM use above approch
 
 function App()
