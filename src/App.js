@@ -1,7 +1,30 @@
 import "bootstrap/dist/css/bootstrap.css";
 import {useState} from "react";
 
+function App()
+{
+  return(
+    <>
+      <ListDemo/>
+    </>
+  )
+}
 
+function ListDemo()
+{
+  let list=["Mohit", "Have", "Car"];
+  for(let i=0; i<10; i++)
+  {
+    list.push("CDAC")
+  }
+    return(
+      <>
+        {list.map( (item)=><p>{item}</p> )}
+      </>
+    )
+}
+export default App;
+/*
 function App()
 {
   return(
@@ -15,7 +38,7 @@ function App()
 }
 
 function Para(props)
-/** or function Para({title, para})  */
+/** or function Para({title, para}) //ex for above fun another way to write
 {
   return(
     <>
@@ -29,7 +52,7 @@ function Para(props)
   )
 }
 export default App;
-/*
+
 function App()
 {
   return(
