@@ -1,6 +1,35 @@
 import "bootstrap/dist/css/bootstrap.css";
 import {useState} from "react";
 
+
+function App()
+{
+  return(
+    <>
+      <Para />
+      <Para title="Chapter 1"/>
+      <Para title="Chapter 2" para="Chal Chalare"/>
+      <Para  title="Chapter 3"/>
+    </>
+  )
+}
+
+function Para(props)
+/** or function Para({title, para})  */
+{
+  return(
+    <>
+      <div className="alert">
+        <h2>{props.title}</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos vitae incidunt a autem? Laudantium error, est et quaerat ad modi.
+        </p>
+      </div>
+    </>
+  )
+}
+export default App;
+/*
 function App()
 {
   return(
@@ -32,7 +61,7 @@ function WhatApp()
   )
 }
 export default App;
-/*
+
 
 Like to msg
 
