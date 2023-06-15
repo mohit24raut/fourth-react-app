@@ -5,6 +5,40 @@ function App()
 {
   return(
     <>
+      <h1>List with Button</h1>
+      <ListDemo/>
+    </>
+  )
+}
+
+function ListDemo()
+{
+  let [list, setList]=useState([]);
+  
+  let addItem=()=>{
+    let newList=[...list, "CDAC"];
+    setList(newList);
+  }
+  return(
+    <>
+      <input 
+          type="button" 
+          value="Click Me" 
+          className="bg-success text-light fs-2"
+          onClick={addItem}
+      />
+
+      {list.map( (item)=> <p>{item}</p>)}
+    </>
+  )
+}
+export default App;
+
+/*
+function App()
+{
+  return(
+    <>
       <ListDemo/>
     </>
   )
@@ -24,7 +58,7 @@ function ListDemo()
     )
 }
 export default App;
-/*
+
 function App()
 {
   return(
