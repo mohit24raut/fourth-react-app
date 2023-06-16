@@ -1,5 +1,25 @@
 import "bootstrap/dist/css/bootstrap.css";
-import { useRef, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Registeration from "./Component/Registeration";
+import Login from "./Component/Login";
+
+function App()
+{
+  return(
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/Regis" element={<Registeration/>}/>;
+        </Routes>
+      </BrowserRouter>
+    </>
+  )
+}
+
+
+export default App;
+/*
+Login with DB connaction
 
 
 function App()
@@ -54,7 +74,7 @@ function Login()
   )
 }
 export default App;
-/*
+
 -----------------------------------------------------------------
 function App()
 {
